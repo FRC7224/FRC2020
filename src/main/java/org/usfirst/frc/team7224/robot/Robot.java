@@ -74,7 +74,7 @@ public class Robot extends TimedRobot {
  
         
 	      autoChooser = new SendableChooser();
-
+    // test
 	//	  autoChooser.addObject("Left Start Auto Select", new AutonomousGrpLeftAutoSelect());
 	//	  autoChooser.addObject("Center Start Auto Select", new AutonomousGrpCenterAutoSelect());
 	//	  autoChooser.addObject("Right Start Auto Select", new AutonomousGrpRightAutoSelect());
