@@ -6,8 +6,8 @@
 /*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team7224.robot;
-
-import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.cameraserver.CameraServer;
+//import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.livewindow.*;
@@ -20,7 +20,7 @@ import org.usfirst.frc.team7224.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team7224.robot.subsystems.Shifter;
 import org.usfirst.frc.team7224.robot.subsystems.Winch;
 import org.usfirst.frc.team7224.robot.OI;
-import org.usfirst.frc.team7224.robot.commands.AutonomousCmd;
+//import org.usfirst.frc.team7224.robot.commands.AutonomousCmd;
 import org.usfirst.frc.team7224.robot.subsystems.Arm;
 import org.usfirst.frc.team7224.robot.subsystems.Chassis;
 import org.usfirst.frc.team7224.robot.subsystems.Claw;

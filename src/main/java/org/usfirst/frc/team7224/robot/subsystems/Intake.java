@@ -3,7 +3,7 @@ package org.usfirst.frc.team7224.robot.subsystems;
 import org.usfirst.frc.team7224.robot.RobotMap;
 import org.usfirst.frc.team7224.robot.commands.IntakeAction;
 
-import edu.wpi.first.wpilibj.Solenoid;
+//import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
