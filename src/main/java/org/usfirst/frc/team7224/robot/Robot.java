@@ -21,7 +21,7 @@ import org.usfirst.frc.team7224.robot.subsystems.Shifter;
 import org.usfirst.frc.team7224.robot.subsystems.Winch;
 import org.usfirst.frc.team7224.robot.OI;
 //import org.usfirst.frc.team7224.robot.commands.AutonomousCmd;
-import org.usfirst.frc.team7224.robot.subsystems.Arm;
+import org.usfirst.frc.team7224.robot.subsystems.Shoot;
 import org.usfirst.frc.team7224.robot.subsystems.Chassis;
 import org.usfirst.frc.team7224.robot.subsystems.Claw;
 import org.usfirst.frc.team7224.robot.subsystems.Intake;
@@ -39,8 +39,8 @@ public class Robot extends TimedRobot {
 
 	public static final Chassis chassis
 	        = new Chassis();
-	public static final Arm arm
-            = new Arm(); 
+	public static final Shoot shoot
+            = new Shoot(); 
 	public static final Pneumatics pneumatics
             = new Pneumatics(); 
 	public static final Intake intake
@@ -50,7 +50,7 @@ public class Robot extends TimedRobot {
 	public static final Claw claw
 	        = new Claw();
 	public static final Shifter shifter
-	        = new Shifter();
+			= new Shifter();
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -85,9 +85,7 @@ public class Robot extends TimedRobot {
 		 
 	      server = CameraServer.getInstance();
 	  server.startAutomaticCapture(0);
-		RobotConstants.targetPositionRotations_a = 0; // reset on startup  height
-		RobotConstants.targetPositionRotations_w = 0; // reset on startup  height
-		  server.startAutomaticCapture(1);
+	  server.startAutomaticCapture(1);
 		  
      	 
 	}	

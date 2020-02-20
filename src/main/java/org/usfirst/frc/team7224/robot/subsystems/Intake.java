@@ -16,7 +16,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 public class Intake extends Subsystem {
 
 
-   private final WPI_VictorSPX intakemotor1 = RobotMap.intakeVictorSPX11;
+   private final WPI_VictorSPX intakemotor1 = RobotMap.intakeVictorSPX7;
   
 
 

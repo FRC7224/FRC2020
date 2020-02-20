@@ -17,7 +17,7 @@ public class RobotConstants {
 	
 	// Joystick 1 constants
 	public static double kdeadzone = 0.1; // updated by MG
-	public static int kclawbutton = 1;
+	public static int kinitShooter = 1;
 	public static int kshiftbutton = 2;
 	public static int kintakeinbutton = 3;
     public static int kintakeoutbutton= 4;
@@ -26,8 +26,8 @@ public class RobotConstants {
 	public static int kclawgrabonbutton = 6; 
 //	public static int kWinchButtonA = 9;
     public static int kpreButton = 7;
-	public static int kArmOverideButton = 8;
-//	public static int kWinchButtonB = 10;
+	public static int kShootOverideButton = 8;
+	public static int kclawbutton = 10;
 	
 	// Simple Drive
 //	public static double simpleDriveTime = 0.0;
@@ -84,7 +84,7 @@ public class RobotConstants {
 	
 	// Intake 
 	public static double kmaxIntakeSpeed =  0.5;
-	public static double kminIntakeSpeed = -0.5;
+	public static double kminIntakeSpeed = 0.0	;
 	
 	// Driverstation
 	public static String gameData = "XXX";
@@ -92,28 +92,55 @@ public class RobotConstants {
 	// Shifter
 	public static double kcloseTimer_timer = .3;
 
-	// arm
-	public static final int kSlotIdx_a = 0;
-	public static final int kallowableCloseLoopError_a = 300;
-	public static final int kPIDLoopIdx_a = 0;
-	public static final int kTimeoutMs_a = 10;
-	public static final double kSlowArm_a = 0.5;   //0.5
-	public static final double kNormalArm_a = 0.5; //2.5
-	public static double kMaxSpeed_a = kNormalArm_a;
-	public static final double kStopSpeed_a = 0.0;
-	public static double targetPositionRotations_a = 0;
-	public static double kArmManualSensitivity_a = 2000;
-	public static double kArm_Zero_HT_a = 0;
-	public static double kArm_FieldHT_a = 5000;
-	public static double kArm_SwitchHT_a = 130000;
-	public static double kArm_ScaleHT_a = 280000; 
-	public static double kArmMinHt_a = -430000;
-	public static double kArmMaxHt_a = 500000;
-	public static double kArmpreHt_a = -219829;
-	public static double kArmPIDF_a = 0.0;
-	public static double kArmPIDP_a = 0.045;
-	public static double kArmPIDI_a = 0.0001;
-	public static double kArmPIDD_a = 0.4;
+//  Elevator 
+    public static double kelvspeed = 0.3;
+
+
+	// Shooter Constants
+	/**
+	 * Velocity is measured in change in native units per TvelMeas= 100ms.
+	 * Example: (1366 Rotations / min) X (1 min / 60 sec) X (1 sec / 10
+	 * TvelMeas) X (4096 native units / rotation) = 9326 native units per 100ms
+	 * Now lets calculate a Feed-forward gain so that 100% motor output is
+	 * calculated when the requested speed is 9328 native units per 100ms.
+	 * F-gain = (100% X 1023) / 9326 F-gain = 0.1097 Lets check our math, if the
+	 * target speed is 9326 native units per 100ms, Closed-loop output will be
+	 * (0.1097 X 9326) => 1023 (full forward).
+	 */
+	public static double shootertargetRPM = 675; // Desired RPM
+	// public static double shootertargetspeed = (shootertargetRPM * 1/60 *1/10
+	// * 4096); // Desired RPM
+	public static double shootertargetspeed = 4200;
+	public static double shooterTolerance = 300.0;
+//	public static double shooterPIDKp = 0.4;
+//	public static double shooterPIDKi = 0.00004;
+//	public static double shooterPIDKd = 0.0;
+//	public static double shooterPIDKf = 1023.0 / 13000.0; // 1023/maximumspeed
+//	public static int shooterPIDIZone = 2000;
+//	public static double shooterPIDRampRate = 0.0;
+	public static double shooterTimer_timer = 2.0;
+	public static boolean shooterMode = false;
+	public static int kPIDLoopIdx = 0;
+	public static int kTimeoutMs = 30;
+	public static double kshoot1P = 0.25;
+	public static double kshoot1I = 0.001;
+	public static double kshoot1D = 20;
+	public static double kshoot1F = 1023.0/7200.0;
+	//
+	public static double kshoot2P = 0.25;
+	public static double kshoot2I = 0.001;
+	public static double kshoot2D = 20;
+	public static double kshoot2F = 1023.0/7200.0;
+//	public static double kshootF = 0.25;
+
+	//* PID Gains may have to be adjusted based on the responsiveness of control loop.
+	// kF: 1023 represents output value to Talon at 100%, 7200 represents Velocity units at 100% output
+
+
+	//	                                    			  kP   kI   kD   kF          Iz    PeakOut */
+
+   //public final static Gains kGains_Velocit = new Gains( 0.25, 0.001, 20, 1023.0/7200.0,  300,  1.00);
+	
 	
 }
 	

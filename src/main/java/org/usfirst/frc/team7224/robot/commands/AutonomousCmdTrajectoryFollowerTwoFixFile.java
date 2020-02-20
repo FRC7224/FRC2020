@@ -54,9 +54,9 @@ public class AutonomousCmdTrajectoryFollowerTwoFixFile extends Command {
            // Determine Switch, Scale or far Switch
            // *********************************************** 
           //  RobotConstants.kMaxSpeed_a = RobotConstants.kSlowArm_a; // slow down arm 
-            Robot.arm.armSetup();
+          //  Robot.arm.armSetup();
           //    if(RobotConstants.gameData.length() > 0) {
-                  switch (Position) { 
+          /*        switch (Position) { 
                   case 0:  // Drive straight
           	    	       fileString = "/home/lvuser/driveStraight.traj"; 
            	    	      // RobotConstants.targetPositionRotations_a = RobotConstants.kArm_FieldHT_a; 
@@ -112,8 +112,11 @@ public class AutonomousCmdTrajectoryFollowerTwoFixFile extends Command {
   	      	               maxtimeout = 10;
                           break;         
                   } // end of switch
+                  
+                  */
+                  fileString = "/home/lvuser/driveStraight.traj"; 
             //  Robot.arm.armControl();
-              SmartDashboard.putNumber("Target Arm Position", RobotConstants.targetPositionRotations_a);
+            //  SmartDashboard.putNumber("Target Arm Position", RobotConstants.targetPositionRotations_a);
             //  } else {
                 
             //	fileString = "/home/lvuser/driveStraight.traj"; 
@@ -122,7 +125,7 @@ public class AutonomousCmdTrajectoryFollowerTwoFixFile extends Command {
             
                   
                 SmartDashboard.putString("GameData", RobotConstants.gameData);            
-                SmartDashboard.putString("FileName", fileString);
+           //     SmartDashboard.putString("FileName", fileString);
         
                   // Raise arm to height set in switch 
           	  //    Robot.arm.armControl();

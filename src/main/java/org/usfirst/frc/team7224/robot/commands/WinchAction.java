@@ -49,7 +49,7 @@ public class WinchAction extends Command {
 
 
 
-    if (Robot.oi.joystick1.getRawButton(RobotConstants.kArmOverideButton)) {
+    if (Robot.oi.joystick1.getRawButton(RobotConstants.kShootOverideButton)) {
         /// This is bad only use in an emergancy 
           SmartDashboard.putNumber("Override", RobotConstants.targetPositionRotations_w);
          if (RobotConstants.targetPositionRotations_w <= RobotConstants.kwinchMinHt_w) 
@@ -63,7 +63,7 @@ public class WinchAction extends Command {
          if (RobotConstants.targetPositionRotations_w >= RobotConstants.kwinchMaxHt_w )
               RobotConstants.targetPositionRotations_w = RobotConstants.kwinchMaxHt_w;  // Limit to max height
     }         
-          Robot.winch.winchControl();
+      //    Robot.winch.winchControl();
           SmartDashboard.putNumber("Target Winch Position", RobotConstants.targetPositionRotations_w);
 
     }

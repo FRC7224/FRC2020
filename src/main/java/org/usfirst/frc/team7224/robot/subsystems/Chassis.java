@@ -24,15 +24,15 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 public class Chassis extends PIDSubsystem {
 
 
-     private final WPI_TalonSRX right1 = RobotMap.chassisTalonSRX1;
-     private final WPI_TalonSRX right2 = RobotMap.chassisTalonSRX2;    
-     private final WPI_TalonSRX right3 = RobotMap.chassisTalonSRX3;
+     private final WPI_VictorSPX right1 = RobotMap.chassisTalonSPX1;
+     private final WPI_VictorSPX right2 = RobotMap.chassisTalonSPX2;    
+     private final WPI_VictorSPX right3 = RobotMap.chassisTalonSPX3;
 
       
  
-    private final WPI_TalonSRX left1 = RobotMap.chassisTalonSRX4;
-    private final WPI_TalonSRX left2 = RobotMap.chassisTalonSRX5;
-    private final WPI_TalonSRX left3 = RobotMap.chassisTalonSRX6;
+    private final WPI_VictorSPX left1 = RobotMap.chassisTalonSPX4;
+    private final WPI_VictorSPX left2 = RobotMap.chassisTalonSPX5;
+    private final WPI_VictorSPX left3 = RobotMap.chassisTalonSPX6;
    
     
 	private final ADXRS450_Gyro gyro = RobotMap.spiGyro_1;
