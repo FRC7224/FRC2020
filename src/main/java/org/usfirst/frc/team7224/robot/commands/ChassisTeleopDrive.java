@@ -33,6 +33,17 @@ public class ChassisTeleopDrive extends Command {
     protected void execute() {
     	     double forward = -Robot.chassis.deadZone(Robot.oi.joystick1.getY()); // forward
              double turn = -Robot.chassis.deadZone(Robot.oi.joystick1.getX()); // turn
+             if (forward >= 0) {
+                 forward = forward*forward;             
+             } else {
+                 forward = -(forward*forward);
+             }
+             if (turn >= 0) {
+                 turn = turn*turn;
+              } else {
+                 turn = -(turn*turn);
+             }
+
              Robot.chassis.autoshift();
              Robot.chassis.arcadeDrive(forward, turn);
              Robot.chassis.displayChasisData();

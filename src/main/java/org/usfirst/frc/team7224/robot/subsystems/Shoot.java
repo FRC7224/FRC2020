@@ -19,7 +19,8 @@ public class Shoot extends Subsystem {
      //private final CANTalon shootMotor1 = RobotMap.shooterCANTalon_1;
 	 private final WPI_TalonSRX shooterMotor1 = RobotMap.shootTalonSRX10;
 	 private final WPI_TalonSRX shooterMotor2 = RobotMap.shootTalonSRX11;
-	 private final WPI_TalonSRX elvMotor = RobotMap.elvTalonSRX9;
+	 private final WPI_VictorSPX elvMotor = RobotMap.elvVictorSPX7;
+	 private final WPI_TalonSRX turnMotor = RobotMap.turnTalonSRX8;
      
 
 
@@ -91,13 +92,21 @@ public class Shoot extends Subsystem {
      /**
       * sets the shooter speed
       */
-     public void setShootSpeed(double speed) {
+     public void setShootSpeed(final double speed) {
          //shootMotor1.set(speed);
 		 shooterMotor1.set(speed);
 		 shooterMotor2.set(speed);
-		 elvMotor.set(ControlMode.PercentOutput, RobotConstants.kelvspeed);
-      }
- 
- 
+	  }
+  /**
+      * sets the elevator speed
+      */
+	  public void setelvSpeed(final double espeed) {
+		elvMotor.set(ControlMode.PercentOutput, espeed);
+	 }
+	// * sets the turn speed
+	// */
+	 public void setturnSpeed(final double tspeed) {
+	   turnMotor.set(ControlMode.PercentOutput, tspeed);
+	}
      }
  

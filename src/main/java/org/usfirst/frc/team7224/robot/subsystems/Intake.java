@@ -16,7 +16,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 public class Intake extends Subsystem {
 
 
-   private final WPI_VictorSPX intakemotor1 = RobotMap.intakeVictorSPX7;
+   private final WPI_TalonSRX intakemotor1 = RobotMap.intakeTalonSRX9;
   
 
 
@@ -32,10 +32,11 @@ public class Intake extends Subsystem {
     * sets the ball motor speed  -1 to +1
     */
    public void setIntakeMotor(double ispeed) {
-	   intakemotor1.set(ControlMode.PercentOutput,-ispeed);
+	   intakemotor1.set(ControlMode.PercentOutput,ispeed);
 		  }
    
 
+          
 
 
 }

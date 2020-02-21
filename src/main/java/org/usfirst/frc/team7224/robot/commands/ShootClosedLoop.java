@@ -44,27 +44,37 @@ protected void execute() {
 
     if (Robot.oi.joystick1.getRawButton(RobotConstants.kinitShooter)) {
 
-        if (shooterTimer.get() == 0) {
-            if (RobotConstants.shooterMode == false) {
-                RobotConstants.shooterMode = true;
-                Robot.shoot.setShootSpeed(RobotConstants.shootertargetspeed);
-            } else { // If the shooter mode was on then toggle off
-                Robot.shoot.setShootSpeed(0);
-                RobotConstants.shooterMode = false;
-            }
-
-            // Start Timer to make sure the toggle happens only once
-            shooterTimer.start();
-        }
+     //   if (shooterTimer.get() == 0) {
+     //       if (RobotConstants.shooterMode == false) {
+     //           RobotConstants.shooterMode = true;
+     //           Robot.shoot.setShootSpeed(RobotConstants.shootertargetspeed);
+     //       } else { // If the shooter mode was on then toggle off
+     //           Robot.shoot.setShootSpeed(0);
+     //           RobotConstants.shooterMode = false;
+     //       }
+     //
+     //       // Start Timer to make sure the toggle happens only once
+     //       shooterTimer.start();
+     //   }
+     Robot.shoot.setShootSpeed(RobotConstants.shootertargetspeed);
+     Robot.shoot.setelvSpeed(RobotConstants.kelvspeed);
+     Robot.shoot.setturnSpeed(RobotConstants.kturnspeed);
+    } else {
+        Robot.shoot.setShootSpeed(0);
+        Robot.shoot.setelvSpeed(0);
+        Robot.shoot.setturnSpeed(0);
     }
+
+
+   // }
 
     // If the shooterTimer is greater than value then reset it
     // Note: Tune the value to better timing of when the button is pressed
     // and the next pressed
-    if (shooterTimer.get() >= RobotConstants.shooterTimer_timer) {
-        shooterTimer.stop();
-        shooterTimer.reset();
-    }
+    // if (shooterTimer.get() >= RobotConstants.shooterTimer_timer) {
+    //    shooterTimer.stop();
+    //    shooterTimer.reset();
+   // }
 
 
 }

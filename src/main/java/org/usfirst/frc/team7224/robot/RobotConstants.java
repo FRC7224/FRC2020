@@ -19,7 +19,7 @@ public class RobotConstants {
 	public static double kdeadzone = 0.1; // updated by MG
 	public static int kinitShooter = 1;
 	public static int kshiftbutton = 2;
-	public static int kintakeinbutton = 3;
+	public static int kintakeinbutton = 9;
     public static int kintakeoutbutton= 4;
 //	public static int kzeroResetbutton = 4;
 	public static int kclawgraboutbutton = 9;
@@ -86,6 +86,9 @@ public class RobotConstants {
 	public static double kmaxIntakeSpeed =  0.5;
 	public static double kminIntakeSpeed = 0.0	;
 	
+	// Turn
+	public static double kturnspeed =  0.2;
+
 	// Driverstation
 	public static String gameData = "XXX";
 	
@@ -93,7 +96,7 @@ public class RobotConstants {
 	public static double kcloseTimer_timer = .3;
 
 //  Elevator 
-    public static double kelvspeed = 0.3;
+    public static double kelvspeed = 0.7;
 
 
 	// Shooter Constants

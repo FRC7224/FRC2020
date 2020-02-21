@@ -48,12 +48,12 @@ public class RobotMap {
     public static WPI_VictorSPX chassisTalonSPX2 = new WPI_VictorSPX(2);
     public static WPI_VictorSPX chassisTalonSPX1 = new WPI_VictorSPX(1);
     public static WPI_TalonSRX turnTalonSRX8 = new WPI_TalonSRX(8);
-    public static WPI_TalonSRX elvTalonSRX9 = new WPI_TalonSRX(9);
     public static WPI_TalonSRX shootTalonSRX11 = new WPI_TalonSRX(11);
     public static WPI_TalonSRX shootTalonSRX10  = new WPI_TalonSRX(10);
  //   public static WPI_TalonSRX winchTalonSRX9= new WPI_TalonSRX(12);
  //   public static WPI_TalonSRX winchTalonSRX10  = new WPI_TalonSRX(13); 
-    public static WPI_VictorSPX intakeVictorSPX7  = new WPI_VictorSPX(7); 
+    public static WPI_VictorSPX elvVictorSPX7  = new WPI_VictorSPX(7); 
+    public static WPI_TalonSRX intakeTalonSRX9  = new WPI_TalonSRX(9); 
 	public static Encoder rigthEncoder = new Encoder(new DigitalInput(0), new DigitalInput(1), false, Encoder.EncodingType.k4X);
 	public static Encoder leftEncoder = new Encoder(new DigitalInput(2), new DigitalInput(3), true, Encoder.EncodingType.k4X);
     public static ADXRS450_Gyro spiGyro_1  = new ADXRS450_Gyro();
