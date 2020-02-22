@@ -1,5 +1,7 @@
 package org.usfirst.frc.team7224.robot.subsystems;
 
+import org.usfirst.frc.team7224.robot.Robot;
+import org.usfirst.frc.team7224.robot.RobotConstants;
 import org.usfirst.frc.team7224.robot.RobotMap;
 import org.usfirst.frc.team7224.robot.commands.IntakeAction;
 
@@ -25,14 +27,17 @@ public class Intake extends Subsystem {
    }
 
    public void setupIntake() {
-	   intakemotor1.set(ControlMode.PercentOutput,0);
+       intakemotor1.set(ControlMode.PercentOutput,0);
+     
    }
 
    /**
     * sets the ball motor speed  -1 to +1
     */
    public void setIntakeMotor(double ispeed) {
-	   intakemotor1.set(ControlMode.PercentOutput,ispeed);
+       intakemotor1.set(ControlMode.PercentOutput,ispeed);
+       Robot.shoot.setturnSpeed(RobotConstants.kturnspeed);
+       
 		  }
    
 

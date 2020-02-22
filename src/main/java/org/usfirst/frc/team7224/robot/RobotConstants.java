@@ -83,11 +83,11 @@ public class RobotConstants {
 	public static int kREMOTE_1_w = 0;
 	
 	// Intake 
-	public static double kmaxIntakeSpeed =  0.5;
+	public static double kmaxIntakeSpeed =  0.9;
 	public static double kminIntakeSpeed = 0.0	;
 	
 	// Turn
-	public static double kturnspeed =  0.2;
+	public static double kturnspeed =  0.25;
 
 	// Driverstation
 	public static String gameData = "XXX";
@@ -113,7 +113,7 @@ public class RobotConstants {
 	public static double shootertargetRPM = 675; // Desired RPM
 	// public static double shootertargetspeed = (shootertargetRPM * 1/60 *1/10
 	// * 4096); // Desired RPM
-	public static double shootertargetspeed = 4200;
+	public static double shootertargetspeed = 15000;
 	public static double shooterTolerance = 300.0;
 //	public static double shooterPIDKp = 0.4;
 //	public static double shooterPIDKi = 0.00004;

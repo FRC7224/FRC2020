@@ -39,13 +39,16 @@ public class Shoot extends Subsystem {
 
 		shooterMotor1.configFactoryDefault();
 		shooterMotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,0,30);
+		shooterMotor1.set(ControlMode.Velocity,0);
+		shooterMotor1.setInverted(true);
+		shooterMotor1.setSensorPhase(true);
+		
 
 				/* Config the peak and nominal outputs */
 		shooterMotor1.configNominalOutputForward(0, RobotConstants.kTimeoutMs);
 		shooterMotor1.configNominalOutputReverse(0, RobotConstants.kTimeoutMs);
-		shooterMotor1.configPeakOutputForward(1, RobotConstants.kTimeoutMs);
+		shooterMotor1.configPeakOutputForward(34000, RobotConstants.kTimeoutMs);
 		shooterMotor1.configPeakOutputReverse(-1, RobotConstants.kTimeoutMs);
-		
 		
 				/* Config the Velocity closed loop gains in slot0 */
 		shooterMotor1.config_kF(RobotConstants.kPIDLoopIdx, RobotConstants.kshoot1F, RobotConstants.kTimeoutMs);
@@ -54,15 +57,19 @@ public class Shoot extends Subsystem {
 		shooterMotor1.config_kD(RobotConstants.kPIDLoopIdx, RobotConstants.kshoot1D, RobotConstants.kTimeoutMs);
 		
 		shooterMotor2.configFactoryDefault();
-		shooterMotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,0,30);
-
+		shooterMotor2.set(ControlMode.Velocity,0);
+		shooterMotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+		shooterMotor2.setSensorPhase(true);
+		shooterMotor2.setInverted(false);
+		
 				/* Config the peak and nominal outputs */
 		shooterMotor2.configNominalOutputForward(0, RobotConstants.kTimeoutMs);
 		shooterMotor2.configNominalOutputReverse(0, RobotConstants.kTimeoutMs);
-		shooterMotor2.configPeakOutputForward(1, RobotConstants.kTimeoutMs);
+		shooterMotor2.configPeakOutputForward(34000, RobotConstants.kTimeoutMs);
 		shooterMotor2.configPeakOutputReverse(-1, RobotConstants.kTimeoutMs);
 		
 		
+
 				/* Config the Velocity closed loop gains in slot0 */
 		shooterMotor2.config_kF(RobotConstants.kPIDLoopIdx, RobotConstants.kshoot2F, RobotConstants.kTimeoutMs);
 		shooterMotor2.config_kP(RobotConstants.kPIDLoopIdx, RobotConstants.kshoot2P, RobotConstants.kTimeoutMs);
@@ -94,8 +101,8 @@ public class Shoot extends Subsystem {
       */
      public void setShootSpeed(final double speed) {
          //shootMotor1.set(speed);
-		 shooterMotor1.set(speed);
-		 shooterMotor2.set(speed);
+		 shooterMotor1.set(ControlMode.Velocity, speed);
+		 shooterMotor2.set(ControlMode.Velocity, speed);
 	  }
   /**
       * sets the elevator speed

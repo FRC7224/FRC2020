@@ -116,7 +116,8 @@ public class Chassis extends PIDSubsystem {
  // setup
  	public void setupDrive() {
 
-        left2.set(ControlMode.PercentOutput,0);
+	   
+		
  		left1.follow(left2);
     	left3.follow(left2);
 
