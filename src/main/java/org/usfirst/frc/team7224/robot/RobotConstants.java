@@ -22,12 +22,13 @@ public class RobotConstants {
 	public static int kintakeinbutton = 9;
     public static int kintakeoutbutton= 4;
 //	public static int kzeroResetbutton = 4;
-	public static int kclawgraboutbutton = 9;
-	public static int kclawgrabonbutton = 6; 
-//	public static int kWinchButtonA = 9;
+	public static int kwheelgraboutbutton = 9;
+	public static int kwheelgrabonbutton = 6; 
+	public static int kWinchButtonA = 10;
+	public static int kWinchButtonB = 5;
     public static int kpreButton = 7;
 	public static int kShootOverideButton = 8;
-	public static int kclawbutton = 10;
+
 	
 	// Simple Drive
 //	public static double simpleDriveTime = 0.0;
@@ -45,9 +46,9 @@ public class RobotConstants {
 	
 
 		
-	// Claw 
-	public static boolean clawOpenState = false;
-	public static double kclawcloseTimer_timer = .3;
+	// Wheel 
+	public static boolean wheelOpenState = false;
+	public static double kwheelcloseTimer_timer = .3;
 
 	// Autonomous 
 	public static int TrajectorySegments;
@@ -83,7 +84,7 @@ public class RobotConstants {
 	public static int kREMOTE_1_w = 0;
 	
 	// Intake 
-	public static double kmaxIntakeSpeed =  0.9;
+	public static double kmaxIntakeSpeed =  0.7;
 	public static double kminIntakeSpeed = 0.0	;
 	
 	// Turn
@@ -113,8 +114,8 @@ public class RobotConstants {
 	public static double shootertargetRPM = 675; // Desired RPM
 	// public static double shootertargetspeed = (shootertargetRPM * 1/60 *1/10
 	// * 4096); // Desired RPM
-	public static double shootertargetspeed1 = 24000;
-	public static double shootertargetspeed2 = 14000;
+	public static double shootertargetspeed1 = 23000;
+	public static double shootertargetspeed2 = 13000;
 	public static double shooterTolerance = 300.0;
 //	public static double shooterPIDKp = 0.4;
 //	public static double shooterPIDKi = 0.00004;

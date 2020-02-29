@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 
-/**
- *
- */
+
+
+ 
 public class WinchAction extends Command {
 
 
@@ -26,51 +26,33 @@ public class WinchAction extends Command {
     @Override
     protected void initialize() {
   		
-    	 Robot.winch.winchSetup();
+    	 Robot.winch.setupWinch();
      }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	    
+    	      if (Robot.oi.joystick1.getRawButton(RobotConstants.kWinchButtonA) && Robot.oi.joystick1.getRawButton(RobotConstants.kWinchButtonB)) {
+    	    	  RobotConstants.WinchState = true;
+    	    	  double winchspeed = Robot.chassis.deadZone(Robot.oi.joystick1.getZ()); // forward
+    	    	  if (winchspeed >= RobotConstants.kmaxWinchSpeed)  // limit max speed
+    	    		  winchspeed = RobotConstants.kmaxWinchSpeed;
+    	    	  if (winchspeed <= RobotConstants.kminWinchSpeed)  // prevent reverse
+    	    		  winchspeed = RobotConstants.kminWinchSpeed;
+    	    	  Robot.winch.setWinchSpeed(winchspeed);
+    //	    	  SmartDashboard.putNumber("winchspeed", winchspeed);
+    	      	  }
+    	    	   else {	  
+    	    	  RobotConstants.WinchState = false;
+    	    	  Robot.winch.setWinchSpeed(RobotConstants.kminWinchSpeed);
+                   }
 
-  // Manual adjustment
-  double height = Robot.chassis.deadZone(Robot.oi.joystick1.getZ()); // height
-  RobotConstants.targetPositionRotations_w =  RobotConstants.targetPositionRotations_w +
-          (height * RobotConstants.kwinchManualSensitivity_w); 
-     SmartDashboard.putNumber("W Height", height);
-     SmartDashboard.putNumber("W ",   RobotConstants.targetPositionRotations_w);
- 
-     if (Robot.oi.joystick1.getRawButton(RobotConstants.kpreButton)) {
-        /// Preset
-        RobotConstants.targetPositionRotations_w = RobotConstants.kwinchpreHt_w;
-          // Redefine top
-    }
-
-
-
-    if (Robot.oi.joystick1.getRawButton(RobotConstants.kShootOverideButton)) {
-        /// This is bad only use in an emergancy 
-          SmartDashboard.putNumber("Override", RobotConstants.targetPositionRotations_w);
-         if (RobotConstants.targetPositionRotations_w <= RobotConstants.kwinchMinHt_w) 
-              RobotConstants.kwinchMinHt_w =RobotConstants.targetPositionRotations_w;  // Redefine bottom
-          if (RobotConstants.targetPositionRotations_w >= RobotConstants.kwinchMaxHt_w )
-              RobotConstants.kwinchMaxHt_w = RobotConstants.targetPositionRotations_w;  // Redefine top
-    }  else {
-     // Button not pressed - Normal mode     	
-         if (RobotConstants.targetPositionRotations_w <= RobotConstants.kwinchMinHt_w) 
-             RobotConstants.targetPositionRotations_w = RobotConstants.kwinchMinHt_w;  // Limit to zero height
-         if (RobotConstants.targetPositionRotations_w >= RobotConstants.kwinchMaxHt_w )
-              RobotConstants.targetPositionRotations_w = RobotConstants.kwinchMaxHt_w;  // Limit to max height
-    }         
-      //    Robot.winch.winchControl();
-          SmartDashboard.putNumber("Target Winch Position", RobotConstants.targetPositionRotations_w);
-
-    }
- 
-  
-
-
+     // Move hook              
+           double hookspeed = Robot.chassis.deadZone(Robot.oi.joystick1.getZ()); 
+           Robot.winch.setHookSpeed(hookspeed*.1);
+                                
+    	 //     SmartDashboard.putBoolean("winch state", RobotConstants.WinchState);
+ 	     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override

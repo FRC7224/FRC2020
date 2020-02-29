@@ -7,7 +7,6 @@
 
 package org.usfirst.frc.team7224.robot;
 import edu.wpi.first.cameraserver.CameraServer;
-//import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.livewindow.*;
@@ -23,7 +22,7 @@ import org.usfirst.frc.team7224.robot.OI;
 //import org.usfirst.frc.team7224.robot.commands.AutonomousCmd;
 import org.usfirst.frc.team7224.robot.subsystems.Shoot;
 import org.usfirst.frc.team7224.robot.subsystems.Chassis;
-import org.usfirst.frc.team7224.robot.subsystems.Claw;
+import org.usfirst.frc.team7224.robot.subsystems.Wheel;
 import org.usfirst.frc.team7224.robot.subsystems.Intake;
 
 
@@ -47,8 +46,8 @@ public class Robot extends TimedRobot {
 	        = new Intake();
     public static final Winch winch
 	        = new Winch();
-	public static final Claw claw
-	        = new Claw();
+	public static final Wheel wheel
+	        = new Wheel();
 	public static final Shifter shifter
 			= new Shifter();
 	public static OI oi;
