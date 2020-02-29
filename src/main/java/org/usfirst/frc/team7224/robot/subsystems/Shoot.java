@@ -38,7 +38,7 @@ public class Shoot extends Subsystem {
      public void setupShooter() {
 
 		shooterMotor1.configFactoryDefault();
-		shooterMotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,0,30);
+		shooterMotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,0,10);
 		shooterMotor1.set(ControlMode.Velocity,0);
 		shooterMotor1.setInverted(true);
 		shooterMotor1.setSensorPhase(true);
@@ -48,7 +48,7 @@ public class Shoot extends Subsystem {
 		shooterMotor1.configNominalOutputForward(0, RobotConstants.kTimeoutMs);
 		shooterMotor1.configNominalOutputReverse(0, RobotConstants.kTimeoutMs);
 		shooterMotor1.configPeakOutputForward(34000, RobotConstants.kTimeoutMs);
-		shooterMotor1.configPeakOutputReverse(-1, RobotConstants.kTimeoutMs);
+		shooterMotor1.configPeakOutputReverse(0, RobotConstants.kTimeoutMs);
 		
 				/* Config the Velocity closed loop gains in slot0 */
 		shooterMotor1.config_kF(RobotConstants.kPIDLoopIdx, RobotConstants.kshoot1F, RobotConstants.kTimeoutMs);
@@ -58,7 +58,7 @@ public class Shoot extends Subsystem {
 		
 		shooterMotor2.configFactoryDefault();
 		shooterMotor2.set(ControlMode.Velocity,0);
-		shooterMotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+		shooterMotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,0,10);
 		shooterMotor2.setSensorPhase(true);
 		shooterMotor2.setInverted(false);
 		
@@ -66,7 +66,7 @@ public class Shoot extends Subsystem {
 		shooterMotor2.configNominalOutputForward(0, RobotConstants.kTimeoutMs);
 		shooterMotor2.configNominalOutputReverse(0, RobotConstants.kTimeoutMs);
 		shooterMotor2.configPeakOutputForward(34000, RobotConstants.kTimeoutMs);
-		shooterMotor2.configPeakOutputReverse(-1, RobotConstants.kTimeoutMs);
+		shooterMotor2.configPeakOutputReverse(0, RobotConstants.kTimeoutMs);
 		
 		
 
@@ -99,10 +99,10 @@ public class Shoot extends Subsystem {
      /**
       * sets the shooter speed
       */
-     public void setShootSpeed(final double speed) {
+     public void setShootSpeed(final double speed1, double speed2) {
          //shootMotor1.set(speed);
-		 shooterMotor1.set(ControlMode.Velocity, speed);
-		 shooterMotor2.set(ControlMode.Velocity, speed);
+		 shooterMotor1.set(ControlMode.Velocity, speed1);
+		 shooterMotor2.set(ControlMode.Velocity, speed2);
 	  }
   /**
       * sets the elevator speed

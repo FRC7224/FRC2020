@@ -21,75 +21,83 @@ import edu.wpi.first.wpilibj.Timer;
 public class ShootClosedLoop extends Command {
 
 // Used for Button Toggle Code
-private Timer shooterTimer = new Timer();
+private final Timer timer = new Timer();
 
-public ShootClosedLoop() {
+    public ShootClosedLoop() {
 
-    requires(Robot.shoot);
+        requires(Robot.shoot);
 
-    // RobotConstants.shootertargetspeed
-}
-
-// Called just before this Command runs the first time
-protected void initialize() {
-    Robot.shoot.setupShooter();
-    RobotConstants.shooterMode = false;
-
-}
-
-// Called repeatedly when this Command is scheduled to run
-protected void execute() {
-    // if button 1 is pressed
-    SmartDashboard.putBoolean("shoot mode ", RobotConstants.shooterMode);
-
-    if (Robot.oi.joystick1.getRawButton(RobotConstants.kinitShooter)) {
-
-     //   if (shooterTimer.get() == 0) {
-     //       if (RobotConstants.shooterMode == false) {
-     //           RobotConstants.shooterMode = true;
-     //           Robot.shoot.setShootSpeed(RobotConstants.shootertargetspeed);
-     //       } else { // If the shooter mode was on then toggle off
-     //           Robot.shoot.setShootSpeed(0);
-     //           RobotConstants.shooterMode = false;
-     //       }
-     //
-     //       // Start Timer to make sure the toggle happens only once
-     //       shooterTimer.start();
-     //   }
-     Robot.shoot.setShootSpeed(RobotConstants.shootertargetspeed);
-     Robot.shoot.setelvSpeed(RobotConstants.kelvspeed);
-     Robot.shoot.setturnSpeed(RobotConstants.kturnspeed);
-    } else {
-        Robot.shoot.setShootSpeed(0);
-        Robot.shoot.setelvSpeed(0);
-        Robot.shoot.setturnSpeed(0);
+        // RobotConstants.shootertargetspeed
     }
 
+    // Called just before this Command runs the first time
+    protected void initialize() {
+        Robot.shoot.setupShooter();
+        RobotConstants.shooterMode = false;
+        timer.start();
+  //      timer.reset();
+  //      timer.reset();
 
-   // }
+    }
 
-    // If the shooterTimer is greater than value then reset it
-    // Note: Tune the value to better timing of when the button is pressed
-    // and the next pressed
-    // if (shooterTimer.get() >= RobotConstants.shooterTimer_timer) {
-    //    shooterTimer.stop();
-    //    shooterTimer.reset();
-   // }
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+        // if button 1 is pressed
+        SmartDashboard.putBoolean("shoot mode ", RobotConstants.shooterMode);
+    //    Robot.shoot.setShootSpeed(0, 0);
+    //    Robot.shoot.setelvSpeed(0);
+    //    Robot.shoot.setturnSpeed(0);
+        final double timetorun = RobotConstants.shooterTimer_timer;
 
+    if (Robot.oi.joystick1.getRawButton(RobotConstants.kinitShooter)) {
+        SmartDashboard.putNumber("shoot mode ", timetorun);
+       // timer.start();
+           if (timer.get() <= timetorun) {
+            SmartDashboard.putNumber("shoot mode inside ", timetorun);
+            SmartDashboard.putNumber("timer ", timer.get());
+           Robot.shoot.setShootSpeed(RobotConstants.shootertargetspeed1, RobotConstants.shootertargetspeed2);
+            } else {
+             Robot.shoot.setShootSpeed(RobotConstants.shootertargetspeed1, RobotConstants.shootertargetspeed2);
+             Robot.shoot.setelvSpeed(RobotConstants.kelvspeed);
+             Robot.shoot.setturnSpeed(RobotConstants.kturnspeed);
+             SmartDashboard.putNumber("shoot mode else ", timetorun);
+            }
+    } else {
+        Robot.shoot.setShootSpeed(0,0);
+        Robot.shoot.setelvSpeed(0);
+        Robot.shoot.setturnSpeed(0);
+        timer.reset();
+    } 
+  
+    
 
-}
+    // }
+ 
+     // If the shooterTimer is greater than value then reset it
+     // Note: Tune the value to better timing of when the button is pressed
+     // and the next pressed
+     // if (shooterTimer.get() >= RobotConstants.shooterTimer_timer) {
+     //    shooterTimer.stop();
+     //    shooterTimer.reset();
+    // }
+ 
+ 
+ }
+ 
+ // Make this return true when this Command no longer needs to run execute()
+ protected boolean isFinished() {
+      //    timer.stop();
+      //    timer.reset();
+     return false;
+ }
+ 
+ // Called once after isFinished returns true
+ protected void end() {
 
-// Make this return true when this Command no longer needs to run execute()
-protected boolean isFinished() {
-    return false;
-}
-
-// Called once after isFinished returns true
-protected void end() {
-}
-
-// Called when another command which requires one or more of the same
-// subsystems is scheduled to run
-protected void interrupted() {
-}
-}
+ }
+ 
+ // Called when another command which requires one or more of the same
+ // subsystems is scheduled to run
+ protected void interrupted() {
+ }
+ }

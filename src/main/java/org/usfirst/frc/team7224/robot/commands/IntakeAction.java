@@ -38,10 +38,10 @@ public class IntakeAction extends Command {
         intakespeed = RobotConstants.kmaxIntakeSpeed;
         turnspeed = RobotConstants.kturnspeed;
         Robot.intake.setIntakeMotor(intakespeed); 	
-        Robot.shoot.setturnSpeed(turnspeed);
+       // Robot.shoot.setturnSpeed(turnspeed);
         } else { //  toggle off
         Robot.intake.setIntakeMotor(0); 	
-        Robot.shoot.setturnSpeed(0);
+      //  Robot.shoot.setturnSpeed(0);
                 }
  
      SmartDashboard.putNumber("Z Intake", intakespeed);

@@ -87,7 +87,7 @@ public class RobotConstants {
 	public static double kminIntakeSpeed = 0.0	;
 	
 	// Turn
-	public static double kturnspeed =  0.25;
+	public static double kturnspeed =  0.18;
 
 	// Driverstation
 	public static String gameData = "XXX";
@@ -96,7 +96,7 @@ public class RobotConstants {
 	public static double kcloseTimer_timer = .3;
 
 //  Elevator 
-    public static double kelvspeed = 0.7;
+    public static double kelvspeed = 0.5;
 
 
 	// Shooter Constants
@@ -113,7 +113,8 @@ public class RobotConstants {
 	public static double shootertargetRPM = 675; // Desired RPM
 	// public static double shootertargetspeed = (shootertargetRPM * 1/60 *1/10
 	// * 4096); // Desired RPM
-	public static double shootertargetspeed = 15000;
+	public static double shootertargetspeed1 = 24000;
+	public static double shootertargetspeed2 = 14000;
 	public static double shooterTolerance = 300.0;
 //	public static double shooterPIDKp = 0.4;
 //	public static double shooterPIDKi = 0.00004;
@@ -121,7 +122,7 @@ public class RobotConstants {
 //	public static double shooterPIDKf = 1023.0 / 13000.0; // 1023/maximumspeed
 //	public static int shooterPIDIZone = 2000;
 //	public static double shooterPIDRampRate = 0.0;
-	public static double shooterTimer_timer = 2.0;
+	public static double shooterTimer_timer = 1.2;
 	public static boolean shooterMode = false;
 	public static int kPIDLoopIdx = 0;
 	public static int kTimeoutMs = 30;

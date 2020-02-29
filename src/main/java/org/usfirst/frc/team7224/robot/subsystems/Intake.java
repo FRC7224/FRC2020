@@ -36,8 +36,7 @@ public class Intake extends Subsystem {
     */
    public void setIntakeMotor(double ispeed) {
        intakemotor1.set(ControlMode.PercentOutput,ispeed);
-       Robot.shoot.setturnSpeed(RobotConstants.kturnspeed);
-       
+          
 		  }
    
 
