@@ -30,14 +30,13 @@ public class AutonomousCmdTrajectoryFollowerTwoFixFile extends Command {
         public double maxtimeout = 8;
         EncoderFollower left;
         EncoderFollower right;
-        public int autofile = 0;
-        public int Position; 
+        public int Filenum = 0; 
         //This has a max size of three
         Waypoint[] waypoints = new Waypoint[2];
         
-        public AutonomousCmdTrajectoryFollowerTwoFixFile(int position) { // 0 Straight,  1 left, 2 center, 3 right
+        public AutonomousCmdTrajectoryFollowerTwoFixFile(int filenum) { // filenum
             requires(Robot.chassis);
-            Position = position; 
+            Filenum = filenum; 
             }  
   
 
@@ -50,85 +49,22 @@ public class AutonomousCmdTrajectoryFollowerTwoFixFile extends Command {
               Robot.chassis.setupDrive();
               RobotConstants.TrajectorySegments = 0; 
            // ***********************************************   
-           // FRC 2018 First Power up game decision
+           // FRC 2020 First Power up game decision
            // Determine Switch, Scale or far Switch
            // *********************************************** 
-          //  RobotConstants.kMaxSpeed_a = RobotConstants.kSlowArm_a; // slow down arm 
-          //  Robot.arm.armSetup();
-          //    if(RobotConstants.gameData.length() > 0) {
-          /*        switch (Position) { 
+                  switch (Filenum) { 
                   case 0:  // Drive straight
           	    	       fileString = "/home/lvuser/driveStraight.traj"; 
-           	    	      // RobotConstants.targetPositionRotations_a = RobotConstants.kArm_FieldHT_a; 
-           	    	       maxtimeout = 10;
-                  case 1:  // Position left  
-                	       if (RobotConstants.gameData.charAt(1) == 'L') { // Go for scale
-                	       fileString = "/home/lvuser/leftToScale.traj"; 
-                	       RobotConstants.targetPositionRotations_a = RobotConstants.kArm_ScaleHT_a;
-                	       maxtimeout = 12;
-                	       }else if (RobotConstants.gameData.charAt(0) == 'L') { // Go to switch
-                	    	fileString = "/home/lvuser/leftToSwitch.traj"; 
-                   	       RobotConstants.targetPositionRotations_a = RobotConstants.kArm_SwitchHT_a;
-                   	       maxtimeout = 10;
-                	       }else { // Position 1 is not left it must be right - go to far switch
-                	    //	fileString = "/home/lvuser/leftToFarSwitch.traj"; 
-                	    	fileString = "/home/lvuser/driveStraight.traj"; 
-                     //	    RobotConstants.targetPositionRotations = RobotConstants.kArm_SwitchHT;
-                            RobotConstants.targetPositionRotations_a = RobotConstants.kArm_FieldHT_a; 
-                      	    maxtimeout = 10;
-                      	    } // end left processing
-                           break;
-                  case 2:  // Position Center 
-           	               if (RobotConstants.gameData.charAt(0) == 'L') { // Go to left switch
-           	            	  RobotConstants.targetPositionRotations_a = RobotConstants.kArm_SwitchHT_a;  
-           	    	        fileString = "/home/lvuser/CenterToLeftSwitch.traj"; 
-           	    	   	        maxtimeout = 10;
-           	               }else  { // Go to right switch
-           	            	 RobotConstants.targetPositionRotations_a = RobotConstants.kArm_SwitchHT_a;   
-           	                fileString = "/home/lvuser/CenterToRightSwitch.traj"; 
-              	    	     maxtimeout = 10;
-           	               } // end center processing
-                           break;
-                  case 3:  // Position right  
-           	               if (RobotConstants.gameData.charAt(1) == 'R') { // Go for scale
-           	                fileString = "/home/lvuser/rightToScale.traj"; 
-                	        RobotConstants.targetPositionRotations_a = RobotConstants.kArm_ScaleHT_a;
-                	        maxtimeout = 12;
-           	               }else if (RobotConstants.gameData.charAt(0) == 'R') { // Go to switch
-           	                fileString = "/home/lvuser/rightToSwitch.traj"; 
-              	           RobotConstants.targetPositionRotations_a = RobotConstants.kArm_SwitchHT_a;
-                	    	maxtimeout = 10;
-           	               }else { // Position 1 is not left it must be left - go to far switch
-           	    	//      fileString = "/home/lvuser/rightToFarSwitch.traj"; 
-           	                fileString = "/home/lvuser/driveStraight.traj";    
-                 	  //    RobotConstants.targetPositionRotations = RobotConstants.kArm_SwitchHT;
-                 	       RobotConstants.targetPositionRotations_a = RobotConstants.kArm_FieldHT_a;	
-                   	        maxtimeout = 10;
-           	               } // end right processing
-                           break;         
+                          maxtimeout = 10;
+                          break;
+                  
                   default: // Default drive straight 
                            fileString = "/home/lvuser/driveStraight.traj"; 
-  	    	             //  RobotConstants.targetPositionRotations_a = RobotConstants.kArm_FieldHT_a; 
   	      	               maxtimeout = 10;
                           break;         
                   } // end of switch
-                  
-                  */
-                  fileString = "/home/lvuser/driveStraight.traj"; 
-            //  Robot.arm.armControl();
-            //  SmartDashboard.putNumber("Target Arm Position", RobotConstants.targetPositionRotations_a);
-            //  } else {
-                
-            //	fileString = "/home/lvuser/driveStraight.traj"; 
-	          //  RobotConstants.targetPositionRotations_a = RobotConstants.kArm_SwitchHT_a; 
-            //    } // End of iff
-            
-                  
-                SmartDashboard.putString("GameData", RobotConstants.gameData);            
-           //     SmartDashboard.putString("FileName", fileString);
-        
-                  // Raise arm to height set in switch 
-          	  //    Robot.arm.armControl();
+
+    
                   File myFile = new File (fileString);
                   Trajectory trajectory = Pathfinder.readFromFile(myFile);
                    
@@ -244,7 +180,6 @@ public class AutonomousCmdTrajectoryFollowerTwoFixFile extends Command {
             RobotConstants.isTrajectory = false;
             Robot.chassis.resetEncoders();
             Robot.chassis.brakemode(false);
-           // RobotConstants.kMaxSpeed_a = RobotConstants.kNormalArm_a; // Normal arm 
         }
 
         @Override
