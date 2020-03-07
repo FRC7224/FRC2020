@@ -34,7 +34,7 @@ public class WheelAction extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		
-		double wheelspeed = Robot.chassis.deadZone(Robot.oi.joystick1.getZ()); 
+		double wheelspeed = Robot.chassis.deadZone(Robot.oi.joystick1.getRawAxis(4)); 
 		Robot.wheel.setWheelSpeed(wheelspeed*.1);
 	
 	} // end exectute

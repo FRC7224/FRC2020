@@ -59,7 +59,8 @@ public class RobotConstants {
 	public static double kmaxWinchSpeed = 1.0;
 	public static double kminWinchSpeed = 0.0;
 	public static boolean WinchState = false;
-	// 
+
+		// 
 	public static final int kSlotIdx_w = 0;
 	public static final int kallowableCloseLoopError_w = 300;
 	public static final int kPIDLoopIdx_w = 0;
@@ -71,18 +72,23 @@ public class RobotConstants {
 	public static double targetPositionRotations_w = 0;
 	public static double kwinchManualSensitivity_w = 2000;
 	public static double kwinch_Zero_HT_w = 0;
-	public static double kwinch_FieldHT_w = 5000;
-	public static double kwinch_SwitchHT_w = 130000;
-	public static double kwinch_ScaleHT_w = 280000; 
+//	public static double kwinch_FieldHT_w = 5000;
+//	public static double kwinch_SwitchHT_w = 130000;
+//	public static double kwinch_ScaleHT_w = 280000; 
 	public static double kwinchMinHt_w = 0;
-	public static double kwinchpreHt_w = 320000;
-	public static double kwinchMaxHt_w = 320000;
+//	public static double kwinchpreHt_w = 320000;
+//	public static double kwinchMaxHt_w = 320000;
 	public static double kwinchPIDF_w = 0.0;
 	public static double kwinchPIDP_w = 0.045;
 	public static double kwinchPIDI_w = 0.0001;
 	public static double kwinchPIDD_w = 0.4;
 	public static int kREMOTE_1_w = 0;
-	
+
+
+
+
+
+
 	// Intake 
 	public static double kmaxIntakeSpeed =  0.7;
 	public static double kminIntakeSpeed = 0.0	;
@@ -97,32 +103,17 @@ public class RobotConstants {
 	public static double kcloseTimer_timer = .3;
 
 //  Elevator 
-    public static double kelvspeed = 0.5;
+	public static double kelvspeed = 0.5;
+	
+//  Hook speed
+public static double khookspeedscale = 0.2;
 
 
 	// Shooter Constants
-	/**
-	 * Velocity is measured in change in native units per TvelMeas= 100ms.
-	 * Example: (1366 Rotations / min) X (1 min / 60 sec) X (1 sec / 10
-	 * TvelMeas) X (4096 native units / rotation) = 9326 native units per 100ms
-	 * Now lets calculate a Feed-forward gain so that 100% motor output is
-	 * calculated when the requested speed is 9328 native units per 100ms.
-	 * F-gain = (100% X 1023) / 9326 F-gain = 0.1097 Lets check our math, if the
-	 * target speed is 9326 native units per 100ms, Closed-loop output will be
-	 * (0.1097 X 9326) => 1023 (full forward).
-	 */
-	public static double shootertargetRPM = 675; // Desired RPM
-	// public static double shootertargetspeed = (shootertargetRPM * 1/60 *1/10
-	// * 4096); // Desired RPM
+
 	public static double shootertargetspeed1 = 23000;
 	public static double shootertargetspeed2 = 13000;
 	public static double shooterTolerance = 300.0;
-//	public static double shooterPIDKp = 0.4;
-//	public static double shooterPIDKi = 0.00004;
-//	public static double shooterPIDKd = 0.0;
-//	public static double shooterPIDKf = 1023.0 / 13000.0; // 1023/maximumspeed
-//	public static int shooterPIDIZone = 2000;
-//	public static double shooterPIDRampRate = 0.0;
 	public static double shooterTimer_timer = 1.2;
 	public static boolean shooterMode = false;
 	public static int kPIDLoopIdx = 0;

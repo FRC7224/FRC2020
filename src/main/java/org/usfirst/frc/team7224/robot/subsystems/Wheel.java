@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Wheel extends Subsystem {
 
-      private final WPI_TalonSRX wheelmotor = RobotMap.wheelTalonSRX14;
+      private final WPI_TalonSRX wheelmotor = RobotMap.wheelTalonSRX13;
   
     
     
